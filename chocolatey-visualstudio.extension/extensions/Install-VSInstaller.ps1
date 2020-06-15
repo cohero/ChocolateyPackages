@@ -4,16 +4,17 @@ function Install-VSInstaller
     param(
       [Parameter(Mandatory = $true)] [string] $PackageName,
       [Parameter(Mandatory = $true)] [hashtable] $PackageParameters,
-      [PSObject] $ProductReference,
+      [PSObject] $ChannelReference,
       [string] $Url,
       [string] $Checksum,
       [string] $ChecksumType,
       [Alias('RequiredVersion')] [version] $RequiredInstallerVersion,
       [version] $RequiredEngineVersion,
       [switch] $Force,
-      [switch] $UseInstallChannelUri
+      [switch] $UseInstallChannelUri,
+      [switch] $DoNotInstallIfNotPresent
     )
-    Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force' UseInstallChannelUri:'$UseInstallChannelUri'";
+    Write-Debug "Running 'Install-VSInstaller' for $PackageName with Url:'$Url' Checksum:$Checksum ChecksumType:$ChecksumType RequiredInstallerVersion:'$RequiredInstallerVersion' RequiredEngineVersion:'$RequiredEngineVersion' Force:'$Force' UseInstallChannelUri:'$UseInstallChannelUri' DoNotInstallIfNotPresent:'$DoNotInstallIfNotPresent'";
     $argumentSet = $PackageParameters.Clone()
 
     Write-Debug 'Determining whether the Visual Studio Installer needs to be installed/updated/reinstalled'
@@ -58,8 +59,15 @@ function Install-VSInstaller
     }
     else
     {
-        Write-Debug 'The Visual Studio Installer is not present and will be installed'
-        $shouldUpdate = $true
+        if ($DoNotInstallIfNotPresent)
+        {
+            Write-Debug 'The Visual Studio Installer is not present'
+        }
+        else
+        {
+            Write-Debug 'The Visual Studio Installer is not present and will be installed'
+            $shouldUpdate = $true
+        }
     }
 
     $attemptingRepair = $false
@@ -120,7 +128,7 @@ function Install-VSInstaller
         $installerFilePath = $null
         if ($Url -eq '')
         {
-            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $argumentSet -ProductReference $ProductReference -UseInstallChannelUri:$UseInstallChannelUri
+            $Url, $Checksum, $ChecksumType = Get-VSBootstrapperUrlFromChannelManifest -PackageParameters $argumentSet -ChannelReference $ChannelReference -UseInstallChannelUri:$UseInstallChannelUri
         }
     }
 

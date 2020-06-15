@@ -2,34 +2,34 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>visualstudio2017testcontroller</id>
-    <version>15.9.2.0</version>
+    <version>15.9.23.0</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/visualstudio2017testcontroller</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Visual Studio 2017 Test Controller</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://blogs.msdn.microsoft.com/visualstudio/2017/04/05/visual-studio-2017-update/</projectUrl>
+    <projectUrl>https://visualstudio.microsoft.com/vs/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/17d25f2fb8a31d40b93a696e345c22a77913418f/icons/vs2017.png</iconUrl>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <licenseUrl>https://www.visualstudio.com/license-terms/mlt687465/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/visualstudio/welcome-to-visual-studio</docsUrl>
-    <bugTrackerUrl>https://visualstudio.uservoice.com/forums/121579-visual-studio</bugTrackerUrl>
+    <bugTrackerUrl>https://developercommunity.visualstudio.com/</bugTrackerUrl>
     <tags>microsoft visual studio visualstudio vs 2017 test controller admin</tags>
     <summary>Distribute automated tests to multiple machines.</summary>
     <description>
 ### Overview
 
-Agents for Visual Studio 2017 can be used for load, functional, and automated testing. For more details, please refer to the [ALM blog](https://aka.ms/tctaversionblog).
+Agents for Visual Studio 2017 can be used for load, functional, and automated testing. For more details, please refer to the [documentation](https://docs.microsoft.com/en-us/visualstudio/test/configure-test-agents-and-controllers-for-load-tests?view=vs-2017).
 
 To find out what's new or to see the known issues, see the [Visual Studio 2017 Release Notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).  
 [System requirements](https://www.visualstudio.com/en-us/productinfo/vs2017-system-requirements-vs)
 
 ### Customizations
 
-All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
+All package parameters are passed to the Visual Studio installer, enabling full customization of the installation. The possible parameters are [described here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2017). The package passes `--norestart --wait` by default, and `--quiet`, unless `--passive` is specified in the package parameters.
 
 The language of the installed software can be controlled using the package parameter `--locale language`.
-The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio#list-of-language-locales). By default, the operating system display language is used.
+The list of languages is [presented here](https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=vs-2017#list-of-language-locales). By default, the operating system display language is used.
 
 #### Example
 This command will install Visual Studio Test Controller, display progress during the installation and specify the English language regardless of operating system settings:
@@ -47,19 +47,17 @@ If control over reboots is required, it is advisable to install the dependencies
 ##### Software
 [Visual Studio 2017 release notes](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)
 ##### Package
-15.9.2.0:
-- Package metadata updated for Visual Studio 2017 version 15.9.2 (the native installer always installs the latest released Visual Studio 2017 build).
+15.9.23.0:
+- Package metadata updated for Visual Studio 2017 version 15.9.23 (the native installer always installs the latest released Visual Studio 2017 build).
 - Updated bootstrapper url.
-- Updated description.
-- Updated chocolatey-visualstudio.extension dependency version.
-- Updated vcredist2017 dependency version.
+- Updated dependency version.
     </releaseNotes>
     <dependencies>
-      <dependency id="chocolatey-visualstudio.extension" version="1.7.1" />
+      <dependency id="chocolatey-visualstudio.extension" version="1.8.1" />
       <dependency id="KB2919355" version="1.0.20160915" /> <!-- for Win8.1/2012R2 -->
-      <dependency id="vcredist2017" version="14.15.26706.0" />
-      <dependency id="dotnet4.6.2" version="4.6.01590.20170129" />
-      <dependency id="visualstudio2017-installer" version="1.0.2" />
+      <dependency id="vcredist140" version="14.16.27027.1" />
+      <dependency id="dotnetfx" version="4.6.2.0" />
+      <dependency id="visualstudio-installer" version="2.0.1" />
     </dependencies>
   </metadata>
 </package>

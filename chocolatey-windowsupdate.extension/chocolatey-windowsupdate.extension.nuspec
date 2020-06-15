@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>chocolatey-windowsupdate.extension</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/chocolatey-windowsupdate.extension</packageSourceUrl>
     <owners>Jakub Bereżański</owners>
     <title>Chocolatey Windows Update extensions</title>
@@ -25,4 +25,10 @@ This package provides helper functions useful for developing packages for Window
     <dependencies>
     </dependencies>
   </metadata>
+  <files>
+    <file src="extensions\*.*" target="extensions" />
+    <file src="..\shared\Get-NativeInstallerExitCode.ps1" target="extensions" />
+    <file src="..\shared\Install-ChocolateyPackageAndHandleExitCode.ps1" target="extensions" />
+    <file src="..\shared\Set-PowerShellExitCode.ps1" target="extensions" />
+  </files>
 </package>

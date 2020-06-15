@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>dotnetfx</id>
-    <version>4.8.0.0-preview3</version>
+    <version>4.8.0.20190930</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/dotnetfx</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.8</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/net/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://docs.microsoft.com/en-us/dotnet/framework/</docsUrl>
     <bugTrackerUrl>https://github.com/Microsoft/dotnet/issues</bugTrackerUrl>
@@ -17,26 +17,24 @@
     <summary>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure.</summary>
     <description>The .NET Framework is a development platform for building apps for web, Windows, Windows Phone, Windows Server, and Microsoft Azure. It consists of the common language runtime (CLR) and the .NET Framework class library, which includes a broad range of functionality and support for many industry standards.
 
-The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic. 
+The .NET Framework provides many services, including memory management, type and memory safety, security, networking, and application deployment. It provides easy-to-use data structures and APIs that abstract the lower-level Windows operating system. You can use a variety of programming languages with the .NET Framework, including C#, F#, and Visual Basic.
 
-.NET Framework 4.8 is the next version of the .NET Framework. This is one of the in-development builds of the next version of the .NET Framework. The changes in this build have been functionally validated by the .NET teams. This build is not supported for production use. The current Early Access build number being shared is 3646.
+Supported Windows Client versions: Windows 10 version 1903, Windows 10 version 1809, Windows 10 version 1803, Windows 10 version 1709, Windows 10 version 1703, Windows 10 version 1607, Windows 8.1, Windows 7 SP1
 
-This pre-release build 3646 includes improvements in [several areas](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/changes.md). This includes accessibility improvements in Winforms and WPF areas as well. You can see the complete list of improvements in this build in the [release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/readme.md).
-
-The .NET Framework build 3646 will replace any existing .NET Framework 4 and later installation on your machine. This means all .NET Framework 4 and later applications on your machine will run on the .NET Framework early access builds upon installation. The .NET Framework build 3646 installs on Windows 10 April 2018 Update, Windows 10 Fall Creators Update, Windows 10 Creators Update, Windows 10 Anniversary Update, Windows Server version 1709 and Windows Server 2016.
+Supported Windows Server versions: Windows Server 2019, Windows Server version 1803, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 
 The matching Developer Pack can be installed using [this package](https://chocolatey.org/packages/netfx-4.8-devpack).</description>
     <releaseNotes>
 ##### Software
-[.NET Framework 4.8 build 3646 announcement](https://blogs.msdn.microsoft.com/dotnet/2018/09/17/announcing-net-framework-4-8-early-access-build-3646/)
-[.NET Framework 4.8 build 3646 release notes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/readme.md)
-[.NET Framework 4.8 build 3646 changes](https://github.com/Microsoft/dotnet-framework-early-access/blob/master/release-notes/NET48/build-3646/changes.md)
+[.NET Framework 4.8 announcement](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-8/)
+[.NET Framework 4.8 release notes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/README.md)
+[.NET Framework 4.8 changes](https://github.com/Microsoft/dotnet/blob/master/releases/net48/dotnet48-changes.md)
 ##### Package
-4.8.0.0-preview3: Initial package release for early access build 3646.
+4.8.0.20190930: Updated extension dependency.
     </releaseNotes>
     <dependencies>
-      <!-- this prerelease build does not support Windows 8.1 -->
-      <!-- <dependency id="KB2919355" version="1.0.20160915" /> -->
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
+      <dependency id="KB2919355" version="1.0.20160915" />
     </dependencies>
   </metadata>
 </package>

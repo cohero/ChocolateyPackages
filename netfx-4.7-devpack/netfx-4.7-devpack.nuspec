@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>netfx-4.7-devpack</id>
-    <version>4.7.2053.0</version>
+    <version>4.7.2053.20190930-rc1</version>
     <packageSourceUrl>https://github.com/jberezanski/ChocolateyPackages/tree/master/netfx-4.7-devpack</packageSourceUrl>
     <owners>jberezanski</owners>
     <title>Microsoft .NET Framework 4.7 Developer Pack</title>
     <authors>Microsoft</authors>
     <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2017/04/05/announcing-the-net-framework-4-7/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
-    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <licenseUrl>https://www.microsoft.com/en-us/servicesagreement</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
     <bugTrackerUrl>http://connect.microsoft.com/VisualStudio</bugTrackerUrl>
@@ -20,10 +20,11 @@
 ##### Software
 https://support.microsoft.com/en-us/help/3186612/the-net-framework-4-7-developer-pack-and-language-packs
 ##### Package
-4.7.2053.0: Initial package release.
+4.7.2053.20190930: Changed depedency from dotnet4.7 to netfx-4.7 and refactored the installation script.
     </releaseNotes>
     <dependencies>
-      <dependency id="dotnet4.7" version="4.7.2053.0" />
+      <dependency id="chocolatey-dotnetfx.extension" version="1.0.1" />
+      <dependency id="netfx-4.7" version="4.7.0.0" />
     </dependencies>
   </metadata>
 </package>

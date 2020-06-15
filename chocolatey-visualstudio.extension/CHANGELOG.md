@@ -1,5 +1,19 @@
 ﻿# CHANGELOG
 
+## Version 1.8.1
+
+- The VSSetup PowerShell module, if present, is used to detect VS instances ((GH-9)[https://github.com/jberezanski/ChocolateyPackages/issues/9]). This protects against future failures due to changes in the (undocumented) VS instance info storage format. On PowerShell 5+ (also 3 and 4 with the PackageManagement Preview module installed) this module can be installed using `Install-Module -Name VSSetup`.
+- (On systems without VSSetup) Fixed detection of installed VS instances when package cache had been moved from the default location ((GH-49)[https://github.com/jberezanski/ChocolateyPackages/issues/49], thanks @bryan5989!).
+- Fixed clean install of VS 2019 16.1+ (which fails to install the VS installer via --quiet --update if it is not installed or is same version). Install-VisualStudioInstaller remains broken. ((GH-64)[https://github.com/jberezanski/ChocolateyPackages/issues/64])
+
+## Version 1.8.0
+
+- Install-VisualStudio, Add-VisualStudioWorkload/Component and Remove-VisualStudioProduct/Workload/Component now support preview releases (via a new -Preview parameter) and Visual Studio 2019 (-VisualStudioYear 2019).
+- Remove-VisualStudioWorkload/Component no longer acts like Add-VisualStudioWorkload/Component if the user passes the '--add' package parameter to `choco uninstall`.
+- Fixed determination of outcome of a Visual Studio update operation.
+- Visual Studio 2017+ modify/update/uninstall operations now act on either official or preview product instances, but never on both kinds at the same time. This enables developing independent package families for both kinds.
+- Fixed installation when current directory is a network share ([GH-59](https://github.com/jberezanski/ChocolateyPackages/issues/59)).
+
 ## Version 1.7.1
 
 - Works around an issue in the Visual Studio Installer (https://github.com/electron/electron/issues/12695, https://github.com/nodejs/node/issues/24360) by ensuring the NODE_OPTIONS environment variable is not passed to the Visual Studio Installer ([GH-56](https://github.com/jberezanski/ChocolateyPackages/pull/56)).

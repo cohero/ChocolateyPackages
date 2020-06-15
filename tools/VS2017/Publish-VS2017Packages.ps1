@@ -1,18 +1,20 @@
 ﻿[CmdletBinding(SupportsShouldProcess = $true)]
 Param
 (
-    [string] $Pattern = '^visualstudio2017[a-z]'
+    [string] $Pattern = '^visualstudio2017[a-z]+$',
+    [SecureString] $ApiKey
 )
 
 #Requires -Version 5
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
+Write-Information "Using filter pattern: $Pattern" -InformationAction Continue
 Push-Location -Path "$PSScriptRoot\..\.."
 try
 {
     $todo = New-Object Collections.ArrayList
-    Get-ChildItem | Where-Object Name -match $Pattern | ForEach-Object {
+    Get-ChildItem | Where-Object Name -match $Pattern | Where-Object { -not (Test-Path -Path "$($_.FullName)\disabled.marker") } | ForEach-Object {
         $n = $_.Name
         $v = ([xml](Get-Content -Path ".\$n\$n.nuspec")).package.metadata.version
         $p = "$PWD\output\$n.$v.nupkg"
@@ -36,7 +38,13 @@ try
         $p = $_.Nupkg
         if ($PSCmdlet.ShouldProcess($p, 'Push'))
         {
-            cpush $p
+            $keyArg = @()
+            if ($ApiKey -ne $null)
+            {
+                $keyArg = @('--api-key', (New-Object Management.Automation.PSCredential -ArgumentList @('dummy', $ApiKey)).GetNetworkCredential().Password)
+            }
+
+            cpush @keyArg $p
         }
 
         $t = $_.Tag
